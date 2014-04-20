@@ -9,7 +9,7 @@ var cp          = require('child_process');
  */
 gulp.task('jekyll-build', function (cb) {
     return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-        .on("close", function () {
+        .on('close', function () {
             cb();
         });
 });
@@ -24,10 +24,10 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 /**
  * Wait for jekyll-build, then launch the Server
  */
-gulp.task('browser-sync', ['jekyll-build'], function() {
+gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
     browserSync.init(null, {
         server: {
-            baseDir: "_site"
+            baseDir: '_site'
         }
     });
 });
@@ -38,7 +38,7 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 gulp.task('sass', function () {
     gulp.src('_scss/main.scss')
         .pipe(sass({includePaths: ['scss']}))
-        .pipe(prefix(["last 15 versions", "> 1%", "ie 8", "ie 7"], { cascade: true }))
+        .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(gulp.dest('_site/css'))
         .pipe(browserSync.reload({stream:true}))
         .pipe(gulp.dest('css'));
@@ -49,12 +49,12 @@ gulp.task('sass', function () {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch("_scss/*.scss", ['sass']);
-    gulp.watch(["_layouts/*.html", "_posts/*"], ['jekyll-rebuild']);
+    gulp.watch('_scss/*.scss', ['sass']);
+    gulp.watch(['_layouts/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['sass', 'browser-sync', 'watch']);
+gulp.task('default', ['browser-sync', 'watch']);
