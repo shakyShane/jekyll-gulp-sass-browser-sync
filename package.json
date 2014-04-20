@@ -1,0 +1,17 @@
+{
+  "name": "browser-sync-jekyll",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.6.1",
+    "gulp-sass": "^0.7.1",
+    "browser-sync": "^0.8.1",
+    "gulp-autoprefixer": "0.0.7"
+  }
+}
