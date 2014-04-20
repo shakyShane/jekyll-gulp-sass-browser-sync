@@ -15,6 +15,13 @@ gulp.task('jekyll-build', function (cb) {
 });
 
 /**
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+    browserSync.reload();
+});
+
+/**
  * Wait for jekyll-build, then launch the Server
  */
 gulp.task('browser-sync', ['jekyll-build'], function() {
@@ -33,8 +40,8 @@ gulp.task('sass', function () {
         .pipe(sass({includePaths: ['scss']}))
         .pipe(prefix(["last 15 versions", "> 1%", "ie 8", "ie 7"], { cascade: true }))
         .pipe(gulp.dest('_site/css'))
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({stream:true}));
+        .pipe(browserSync.reload({stream:true}))
+        .pipe(gulp.dest('css'));
 });
 
 /**
@@ -43,10 +50,11 @@ gulp.task('sass', function () {
  */
 gulp.task('watch', function () {
     gulp.watch("_scss/*.scss", ['sass']);
-    gulp.watch(["_layouts/*.html", "_posts/*.md"], ['jekyll-build', browserSync.reload]);
+    gulp.watch(["_layouts/*.html", "_posts/*"], ['jekyll-rebuild']);
 });
 
 /**
- * Default task, running just `gulp` will compile the sass, compile the jekyll site, launch BrowserSync & watch files.
+ * Default task, running just `gulp` will compile the sass,
+ * compile the jekyll site, launch BrowserSync & watch files.
  */
 gulp.task('default', ['sass', 'browser-sync', 'watch']);
