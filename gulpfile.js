@@ -4,19 +4,17 @@ var sass        = require('gulp-sass');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 
-function notify () {
-    browserSync.notify("<span style='color: grey'>Running:</span> $ jekyll build");
-}
+var messages = {
+    jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+};
 
 /**
  * Build the Jekyll Site
  */
-gulp.task('jekyll-build', function (cb) {
-    notify();
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify(messages.jekyllBuild);
     return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-        .on('close', function () {
-            cb();
-        });
+        .on('close', done);
 });
 
 /**
@@ -33,7 +31,8 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
     browserSync.init(null, {
         server: {
             baseDir: '_site'
-        }
+        },
+        host: "0.0.0.0"
     });
 });
 
