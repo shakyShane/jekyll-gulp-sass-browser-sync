@@ -1,4 +1,4 @@
 name: Your New Jekyll Site
 markdown: redcarpet
-pygments: true
+highlighter: pygments # or rouge or null
 exclude: ["node_modules", "gulpfile.js", "package.json"]
