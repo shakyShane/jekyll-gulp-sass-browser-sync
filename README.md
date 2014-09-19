@@ -45,8 +45,8 @@ You can easily deploy your site build to a gh-pages branch. First, follow the in
 ```javascript
 var deploy = require("gulp-gh-pages");
 
-gulp.task('deploy', ['jekyll-build'], function () {
-  gulp.src("./_site/**/*")
-    .pipe(deploy())
+gulp.task("deploy", ["jekyll-build"], function () {
+    gulp.src("./_site/**/*")
+        .pipe(deploy());
 });
 ```
