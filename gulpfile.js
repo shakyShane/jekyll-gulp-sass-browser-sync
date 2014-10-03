@@ -1,6 +1,7 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync');
-var sass        = require('gulp-sass');
+// var sass        = require('gulp-sass');
+var sass        = require('gulp-ruby-sass');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 
@@ -40,10 +41,11 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  */
 gulp.task('sass', function () {
     return gulp.src('_scss/main.scss')
-        .pipe(sass({
-            includePaths: ['scss'],
-            onError: browserSync.notify
+        .pipe(sass({  
+            sourcemapPath: ['./scss'],
+            require: ['bootstrap-sass']
         }))
+        .on('error', browserSync.notify)
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(gulp.dest('_site/css'))
         .pipe(browserSync.reload({stream:true}))

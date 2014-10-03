@@ -1,3 +1,5 @@
 _site
 .idea
 node_modules
+_bower_components
+.sass-cache
