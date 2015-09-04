@@ -1,3 +1,6 @@
+## Forked from shakyShane
+1. 9/3/15 updated package.json version numbers and urls for personal boilerplate
+
 jekyll-gulp-sass-browser-sync
 =============================
 
