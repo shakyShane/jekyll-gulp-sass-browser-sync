@@ -9,10 +9,11 @@
   "author": "Shane Osbourne",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.8.8",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "1.0.0",
     "gulp-sass": "^2.1.0",
-    "browser-sync": "^1.3.7",
-    "gulp-autoprefixer": "1.0.0"
+    "gulp-sourcemaps": "^2.6.3"
   },
   "repository": {
     "type": "git",
