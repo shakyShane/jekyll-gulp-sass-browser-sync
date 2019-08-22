@@ -12,6 +12,7 @@
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "1.0.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^2.6.3"
   },
@@ -28,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync/issues"
   },
-  "homepage": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync"
+  "homepage": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync",
+  "dependencies": {}
 }

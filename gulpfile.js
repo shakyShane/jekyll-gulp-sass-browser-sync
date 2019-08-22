@@ -1,9 +1,10 @@
 const { src, dest, series, watch, task, parallel } = require('gulp'),
   browserSync = require('browser-sync'),
   sass        = require('gulp-sass'),
-  prefix      = require('gulp-autoprefixer'),
+  prefix       = require('gulp-autoprefixer'),
   cp          = require('child_process'),
   sourcemaps  = require('gulp-sourcemaps'),
+  plumber     = require('gulp-plumber'),
   jekyll      = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
 
@@ -22,8 +23,10 @@ function browserSyncReload(done) {
 
 function jekyll_scss() {
   return src('_scss/main.scss')
+    .pipe(plumber())
     .pipe(sass({
       includePaths: ['scss'],
+      outputStyle: 'compressed',
     }))
     .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
     .pipe(sourcemaps.write())
