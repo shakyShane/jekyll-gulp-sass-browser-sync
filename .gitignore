@@ -1,3 +1,5 @@
 _site
 .idea
 node_modules
+_javascript/vendor/*
+!_javascript/vendor/.gitkeep

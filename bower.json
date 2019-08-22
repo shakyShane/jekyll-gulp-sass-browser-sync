@@ -1,0 +1,14 @@
+{
+  "name": "jekyllgulp",
+  "version": "0.0.0",
+  "authors": [
+    "jekyll-gulp-sass-browser-sync"
+  ],
+  "description": "Jekyll Gulp Sass BrowserSync",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "jquery": "latest"
+  },
+  "dependencies": {}
+}
